@@ -32,6 +32,9 @@
             photo[i].addEventListener("click", function() {
                 var modal = this.parentNode.nextElementSibling;
                 modal.classList.add("active");
+                modal.addEventListener("click", function() {
+                    this.classList.remove("active");
+                });
             });
             close[i].addEventListener("click", function() {
                 var modal = this.parentNode.parentNode;
