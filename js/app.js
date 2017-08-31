@@ -18,7 +18,7 @@
         var out = "";
         out += "<ul>";
         for (var i = 0, arrLen = arr.length; i < arrLen; i++) {
-            out += '<li><a href="#"><img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '.jpg" class="photo"><span class="close">x</span></a></li>';
+            out += '<li><a href="#"><img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '.jpg" class="photo"></a><div class="modal"><div class="modal-img"><img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '.jpg"><span class="close">x</span></div></div></li>';
         }
         out += "</ul>";
         document.getElementById("response").innerHTML = out;
@@ -26,16 +26,16 @@
     }
 
     function openPhoto() {
-        var img = document.getElementsByTagName("img");
+        var photo = document.getElementsByClassName("photo");
         var close = document.getElementsByClassName("close");
-        for (var i = 0, imgLen = img.length; i < imgLen; i++) {
-            img[i].addEventListener("click", function() {
-                var li = this.parentNode.parentNode;
-                li.classList.add("active");
+        for (var i = 0, imgLen = photo.length; i < imgLen; i++) {
+            photo[i].addEventListener("click", function() {
+                var modal = this.parentNode.nextElementSibling;
+                modal.classList.add("active");
             });
             close[i].addEventListener("click", function() {
-                var li = this.parentNode.parentNode;
-                li.classList.remove("active");
+                var modal = this.parentNode.parentNode;
+                modal.classList.remove("active");
             });
         }
     }
