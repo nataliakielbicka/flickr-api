@@ -17,11 +17,26 @@
 
     function loadData(arr) {
         var out = "";
-        var i;
-        for (i = 0; i < arr.length; i++) {
+        for (var i = 0; i < arr.length; i++) {
+
+            var aa = 'https://api.flickr.com/services/rest/?method=flickr.photos.getExif&api_key=1822a31c5cd782229698ed02217c7ea0&photo_id=' + arr[i].id;
+            console.log(aa)
             out += '<img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '.jpg">';
         }
         document.getElementById("response").innerHTML = out;
     }
 
 })();
+// var request = new XMLHttpRequest();
+//     request.open("GET", 'https://api.flickr.com/services/rest/?method=flickr.photos.getExif&api_key=1822a31c5cd782229698ed02217c7ea0&photo_id=' + arr[i].id, false);
+//     request.send();
+//     var xml = request.responseXML;
+//     var users = xml.getElementsByTagName("photo");
+//     console.log(users)
+//     for (var j = 0; j < users.length; j++) {
+//         var user = users[j];
+//         var names = user.getElementsByTagName("exif");
+//         for (var k = 0; k < names.length; k++) {
+//             console.log(names[j].childNodes[0].nodeValue);
+//         }
+//     }
