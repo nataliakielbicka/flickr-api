@@ -22,6 +22,22 @@ body {
     margin: auto;
 }
 
+.photos {
+    ul {
+        padding: 0;
+        width: 100%;
+        column-count: 3;
+        column-gap: 1em;
+        li {
+            list-style: none;
+        }
+    }
+    .photo {
+        margin: 0 0 0.8em 0;
+        width: 100%;
+    }
+}
+
 .copy {
     position: absolute;
     right: 20px;

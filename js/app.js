@@ -17,12 +17,14 @@
 
     function loadData(arr) {
         var out = "";
+        out += "<ul>";
         for (var i = 0; i < arr.length; i++) {
 
-            var aa = 'https://api.flickr.com/services/rest/?method=flickr.photos.getExif&api_key=1822a31c5cd782229698ed02217c7ea0&photo_id=' + arr[i].id;
-            console.log(aa)
-            out += '<img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '.jpg">';
+            // var aa = 'https://api.flickr.com/services/rest/?method=flickr.photos.getExif&api_key=1822a31c5cd782229698ed02217c7ea0&photo_id=' + arr[i].id;
+            // console.log(aa)
+            out += '<li><a href="#"><img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '.jpg" class="photo"></a></li>';
         }
+        out += "</ul>";
         document.getElementById("response").innerHTML = out;
     }
 

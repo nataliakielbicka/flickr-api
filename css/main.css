@@ -17,6 +17,18 @@ body {
   max-width: 1200px;
   margin: auto; }
 
+.photos ul {
+  padding: 0;
+  width: 100%;
+  column-count: 3;
+  column-gap: 1em; }
+  .photos ul li {
+    list-style: none; }
+
+.photos .photo {
+  margin: 0 0 0.8em 0;
+  width: 100%; }
+
 .copy {
   position: absolute;
   right: 20px;
