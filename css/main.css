@@ -29,11 +29,6 @@ body {
     list-style: none; }
     .photos ul li .close {
       display: none; }
-  .photos ul .modal-img {
-    background-color: #fff;
-    padding: 50px;
-    position: relative;
-    z-index: 99; }
   .photos ul .modal {
     display: none; }
     .photos ul .modal.active {
@@ -49,10 +44,15 @@ body {
       padding: 20px;
       z-index: 999;
       width: 100%; }
-      .photos ul .modal.active img {
-        display: block;
-        width: auto;
-        margin: auto; }
+      .photos ul .modal.active .modal-img {
+        background-color: #fff;
+        padding: 50px 50px 30px 50px;
+        position: relative;
+        z-index: 99; }
+        .photos ul .modal.active .modal-img img {
+          display: block;
+          width: auto;
+          margin: auto; }
       .photos ul .modal.active .close {
         color: #222;
         cursor: pointer;
@@ -68,6 +68,15 @@ body {
         line-height: 30px;
         font-size: 30px;
         z-index: 9999; }
+      .photos ul .modal.active .exif {
+        color: #222;
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 20px auto 0 auto;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase; }
 
 .photos .photo {
   margin: 0 0 0.8em 0;
