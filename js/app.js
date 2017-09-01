@@ -1,27 +1,35 @@
 (function() {
     "use strict";
 
-    var xmlhttp = new XMLHttpRequest();
-    var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1822a31c5cd782229698ed02217c7ea0&tags=journey&per_page=50&format=json&nojsoncallback=1";
+    function getData() {
+        var xmlhttp = new XMLHttpRequest();
+        var sInput = document.getElementById("sInput");
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var answer = JSON.parse(this.responseText);
+                var data = answer.photos.photo;
+                loadData(data);
+            }
+        };
 
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var answer = JSON.parse(this.responseText);
-            var data = answer.photos.photo;
-            loadData(data);
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+        sInput.addEventListener("keyup", function() {
+            setTimeout(function() {
+                var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1822a31c5cd782229698ed02217c7ea0&text=" + sInput.value + "&per_page=50&format=json&nojsoncallback=1";
+                xmlhttp.open("GET", url, true);
+                xmlhttp.send();
+            }, 1000);
+        });
+    }
 
     function loadData(arr) {
+        var response = document.getElementById("response");
         var out = "";
         out += "<ul>";
         for (var i = 0, arrLen = arr.length; i < arrLen; i++) {
             out += '<li><a href="#"><img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '.jpg" class="photo"></a><div class="modal"><div class="modal-img"><img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '.jpg"><a class="exif" href="https://api.flickr.com/services/rest/?method=flickr.photos.getExif&api_key=1822a31c5cd782229698ed02217c7ea0&photo_id=' + arr[i].id + '" target="_blank">open info about exif</a><span class="close">x</span></div></div></li>';
         }
         out += "</ul>";
-        document.getElementById("response").innerHTML = out;
+        response.innerHTML = out;
         openPhoto();
     }
 
@@ -43,4 +51,5 @@
         }
     }
 
+    getData();
 })();
