@@ -4,20 +4,29 @@
     function getData() {
         var xmlhttp = new XMLHttpRequest();
         var sInput = document.getElementById("sInput");
+        var response = document.getElementById("response");
         xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState == 4 && this.status == 200 && sInput.value) {
                 var answer = JSON.parse(this.responseText);
                 var data = answer.photos.photo;
                 loadData(data);
             }
+            if (this.readyState == 1) {
+                response.innerHTML = "<div class='loading'></div>";
+            }
         };
 
         sInput.addEventListener("keyup", function() {
-            setTimeout(function() {
-                var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1822a31c5cd782229698ed02217c7ea0&text=" + sInput.value + "&per_page=50&format=json&nojsoncallback=1";
-                xmlhttp.open("GET", url, true);
-                xmlhttp.send();
-            }, 1000);
+            if (sInput.value === "") {
+                response.innerHTML = "<span class='info'>Photos from Flickr</span>";
+            } else {
+                setTimeout(function() {
+                    var url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1822a31c5cd782229698ed02217c7ea0&text=" + sInput.value + "&per_page=50&format=json&nojsoncallback=1";
+                    xmlhttp.open("GET", url, true);
+                    xmlhttp.send();
+                }, 1000);
+            }
+
         });
     }
 
