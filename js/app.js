@@ -26,7 +26,7 @@
         var out = "";
         out += "<ul>";
         for (var i = 0, arrLen = arr.length; i < arrLen; i++) {
-            out += '<li><a href="#"><img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '.jpg" class="photo"></a><div class="modal"><div class="modal-img"><img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '.jpg"><a class="exif" href="https://api.flickr.com/services/rest/?method=flickr.photos.getExif&api_key=1822a31c5cd782229698ed02217c7ea0&photo_id=' + arr[i].id + '" target="_blank">open info about exif</a><span class="close">x</span></div></div></li>';
+            out += '<li><a href="#"><img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '.jpg" class="photo"></a><div class="modal"><div class="modal-img"><img src="http://farm' + arr[i].farm + '.staticflickr.com/' + arr[i].server + '/' + arr[i].id + '_' + arr[i].secret + '_c.jpg"><a class="exif" href="https://api.flickr.com/services/rest/?method=flickr.photos.getExif&api_key=1822a31c5cd782229698ed02217c7ea0&photo_id=' + arr[i].id + '" target="_blank">open info about exif</a><span class="close">x</span></div></div></li>';
         }
         out += "</ul>";
         response.innerHTML = out;

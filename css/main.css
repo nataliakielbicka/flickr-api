@@ -52,7 +52,8 @@ body {
         .photos ul .modal.active .modal-img img {
           display: block;
           width: auto;
-          margin: auto; }
+          margin: auto;
+          max-height: 80vh; }
       .photos ul .modal.active .close {
         color: #222;
         cursor: pointer;
